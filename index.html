@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Tuba 💖</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: black;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Heading */
+h1 {
+    margin-top: 30px;
+    font-size: 45px;
+    color: #ff4b7d;
+}
+
+/* Slideshow */
+.slideshow img {
+    width: 240px;
+    border-radius: 20px;
+    margin-top: 15px;
+    box-shadow: 0 0 25px pink;
+}
+
+/* Cake */
+.cake {
+    font-size: 90px;
+    margin-top: 10px;
+}
+
+/* Button */
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border-radius: 25px;
+    border: none;
+    background: #ff4b7d;
+    color: white;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+/* Message */
+#message {
+    margin-top: 20px;
+    font-size: 22px;
+    min-height: 120px;
+}
+
+/* Hearts */
+.heart {
+    position: absolute;
+    color: pink;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* Fireworks */
+.firework {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(25); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎉 Happy Birthday Tuba 🎉</h1>
+
+<div class="slideshow">
+    <img id="slide" src="photo1.jpg">
+</div>
+
+<div class="cake">🎂</div>
+
+<button onclick="startSurprise()">Tap for Magic 💖</button>
+
+<div id="message"></div>
+
+<!-- Music -->
+<audio autoplay loop>
+    <source src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthday.mid">
+</audio>
+
+<script>
+/* Typewriter Message */
+let text = "💖 I Love you love you Love you Tuba 💖\n\nMr makdra man huuu hehehe 😏\n\nHappy Birthday to my giraffeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee 🦒\n\npanda 🐼 tota 🦜 gundi 😈 pookie 💕 Gul eram bhature 😋\n\nStay cute, stay crazy, stay mine 😌🔥";
+let index = 0;
+
+function typeWriter() {
+    if (index < text.length) {
+        document.getElementById("message").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, 40);
+    }
+}
+
+/* Fireworks */
+function fireworks() {
+    for (let i = 0; i < 40; i++) {
+        let f = document.createElement("div");
+        f.className = "firework";
+        f.style.left = Math.random() * window.innerWidth + "px";
+        f.style.top = Math.random() * window.innerHeight + "px";
+        document.body.appendChild(f);
+
+        setTimeout(() => f.remove(), 1000);
+    }
+}
+
+/* Hearts */
+function createHeart() {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (20 + Math.random() * 20) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 300);
+
+/* Start */
+function startSurprise() {
+    typeWriter();
+    fireworks();
+}
+</script>
+
+</body>
+</html>
